@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>消灭星星</title>
+	<style type="text/css">
+		body {
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+	<script type="text/javascript">
+	var img_min_width = 15;
+	var img_max_width = 90;
+	var x = 0;
+	var y = 0;
+	var x_right = window.innerWidth - img_max_width;
+	var y_bottom = window.innerHeight - img_max_width;
+	window.onload = function(){
+		setInterval(function(){
+			/*插入图片*/
+			var img_node = document.createElement("img");
+			img_node.setAttribute("src","images/xingxing.gif");
+			document.body.appendChild(img_node);
+			/*控制图片大小*/
+			img_node.setAttribute("width",parseInt(Math.random()*(img_max_width - img_min_width) + img_min_width));
+			/*图片位置*/
+			var x = parseInt(Math.random()*x_right);
+			var y = parseInt(Math.random()*y_bottom);
+			img_node.setAttribute("style","position:absolute;left:"+x+"px;top:"+y+"px");
+			/*点击消失*/
+			img_node.setAttribute("onclick","this.parentNode.removeChild(this)");
+		},100);
+	}
+	</script>
+</html>
